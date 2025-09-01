@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package Authenticate;
+
+service AuthService {
+  rpc GenerateTokens (GenerateTokensRequest) returns (GenerateTokensResponse);
+  rpc VerifyTokens (VerifyTokensRequest) returns (VerifyTokensResponse);
+  rpc RefreshTokens (RefreshTokensRequest) returns (RefreshTokensResponse);
+}
+
+message GenerateTokensRequest {
+  string userId = 1;
+  string email = 2;
+}
+
+message Tokens {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+message GenerateTokensResponse {
+  Tokens tokens = 1;
+  string message = 2;
+}
+
+message VerifyTokensRequest {
+  string accessToken = 1;
+  string refreshToken = 2;
+}
+
+message VerifyTokensResponse {
+  string userId = 1;
+  string email = 2;
+  string message = 3;
+}
+
+message RefreshTokensRequest {
+  string refreshToken = 1;
+}
+
+message RefreshTokensResponse {
+  Tokens tokens = 1;
+  string message = 2;
+}
