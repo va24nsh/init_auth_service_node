@@ -31,7 +31,7 @@ server.addService(authProto.AuthService.service, {
         accessToken,
         refreshToken,
       });
-      callback(null, { ...userData, message: "Tokens are valid" });
+      callback(null, { user: userData, message: "Tokens are valid" });
     } catch (error) {
       callback({ code: grpc.status.UNAUTHENTICATED, message: "Unauthorized" });
     }

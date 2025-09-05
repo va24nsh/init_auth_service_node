@@ -18,6 +18,11 @@ message Tokens {
   string refreshToken = 2;
 }
 
+message UserData {
+  string userId = 1;
+  string email = 2;
+}
+
 message GenerateTokensResponse {
   Tokens tokens = 1;
   string message = 2;
@@ -29,9 +34,8 @@ message VerifyTokensRequest {
 }
 
 message VerifyTokensResponse {
-  string userId = 1;
-  string email = 2;
-  string message = 3;
+  UserData user = 1;
+  string message = 2;
 }
 
 message RefreshTokensRequest {
